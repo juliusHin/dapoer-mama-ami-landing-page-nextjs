@@ -3,21 +3,37 @@ import { daysUntil, festivals, getNextFestival } from "./festivals";
 
 describe("getNextFestival", () => {
   it("mengembalikan Imlek jika sekarang sebelum deadline PO Imlek", () => {
-    expect(getNextFestival(new Date("2026-10-18")).id).toBe("imlek");
+    expect(getNextFestival(new Date("2026-10-18T12:00:00+07:00")).id).toBe(
+      "imlek"
+    );
   });
 
   it("mengembalikan Mooncake setelah deadline Duan Wu", () => {
-    expect(getNextFestival(new Date("2027-06-05")).id).toBe("mooncake");
+    expect(getNextFestival(new Date("2027-06-05T12:00:00+07:00")).id).toBe(
+      "mooncake"
+    );
   });
 
   it("null jika semua deadline terlewat", () => {
-    expect(getNextFestival(new Date("2028-01-01"))).toBeNull();
+    expect(getNextFestival(new Date("2028-01-01T12:00:00+07:00"))).toBeNull();
   });
 });
 
 describe("daysUntil", () => {
   it("menghitung selisih hari dibulatkan ke atas", () => {
-    expect(daysUntil("2027-01-27", new Date("2027-01-17T00:00:00"))).toBe(10);
+    expect(
+      daysUntil("2027-01-27T23:59:59+07:00", new Date("2027-01-17T23:59:59+07:00"))
+    ).toBe(10);
+  });
+});
+
+describe("batas deadline PO", () => {
+  it("tepat di momen deadline: festival sudah tidak tersedia (eksklusif)", () => {
+    expect(getNextFestival(new Date("2027-01-27T23:59:59+07:00")).id).toBe("ce-it");
+  });
+
+  it("satu detik sebelum deadline: masih tersedia", () => {
+    expect(getNextFestival(new Date("2027-01-27T23:59:58+07:00")).id).toBe("imlek");
   });
 });
 

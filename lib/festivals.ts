@@ -4,7 +4,7 @@ export type Festival = {
   monthLabel: string;
   /** Tanggal festival (kalender lunar — verifikasi tiap tahun) */
   date: string;
-  /** Batas akhir PO, H-10 dari festival */
+  /** Batas akhir PO (akhir hari WIB, H-10 dari festival) */
   poDeadline: string;
   highlight: string;
   emoji: string;
@@ -17,7 +17,7 @@ export const festivals: Festival[] = [
     name: "Imlek",
     monthLabel: "Januari – Februari",
     date: "2027-02-06",
-    poDeadline: "2027-01-27",
+    poDeadline: "2027-01-27T23:59:59+07:00",
     highlight: "Kue Keranjang & Bacang",
     emoji: "🏮",
     description:
@@ -28,7 +28,7 @@ export const festivals: Festival[] = [
     name: "Ce It",
     monthLabel: "Maret – April",
     date: "2027-04-05",
-    poDeadline: "2027-03-26",
+    poDeadline: "2027-03-26T23:59:59+07:00",
     highlight: "Rendang Vegetarian",
     emoji: "🕯️",
     description:
@@ -39,7 +39,7 @@ export const festivals: Festival[] = [
     name: "Duan Wu Jie",
     monthLabel: "Juni",
     date: "2027-06-09",
-    poDeadline: "2027-05-30",
+    poDeadline: "2027-05-30T23:59:59+07:00",
     highlight: "Bacang Daun Pandan",
     emoji: "🎋",
     description:
@@ -50,7 +50,7 @@ export const festivals: Festival[] = [
     name: "Mooncake Festival",
     monthLabel: "September",
     date: "2027-09-15",
-    poDeadline: "2027-09-05",
+    poDeadline: "2027-09-05T23:59:59+07:00",
     highlight: "Mooncake",
     emoji: "🥮",
     description:
