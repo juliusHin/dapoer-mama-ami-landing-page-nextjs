@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Poppins } from "next/font/google";
+import StickyWhatsApp from "./components/StickyWhatsApp";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
         {children}
+        <StickyWhatsApp />
       </body>
     </html>
   );
