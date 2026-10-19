@@ -7,10 +7,13 @@ export default function CountdownChip() {
   const [info, setInfo] = useState<{ name: string; days: number } | null>(null);
 
   useEffect(() => {
-    const next = getNextFestival();
-    if (next) {
-      setInfo({ name: next.name, days: Math.max(0, daysUntil(next.poDeadline)) });
-    }
+    const id = setTimeout(() => {
+      const next = getNextFestival();
+      if (next) {
+        setInfo({ name: next.name, days: Math.max(0, daysUntil(next.poDeadline)) });
+      }
+    }, 0);
+    return () => clearTimeout(id);
   }, []);
 
   return (

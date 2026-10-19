@@ -30,7 +30,7 @@ for (const t of targets) {
   const fontSize = t.label.length > 20 ? Math.round(t.w / 28) : Math.round(t.w / 12);
   const svg = `<svg width="${t.w}" height="${t.h}" xmlns="http://www.w3.org/2000/svg">
   <rect width="100%" height="100%" fill="${t.bg}"/>
-  <text x="50%" y="50%" font-family="sans-serif" font-size="${fontSize}" fill="${t.fg}" text-anchor="middle" dominant-baseline="middle">${t.label}</text>
+  <text x="50%" y="50%" font-family="sans-serif" font-size="${fontSize}" fill="${fg}" text-anchor="middle" dominant-baseline="middle">${t.label}</text>
 </svg>`;
   const buf = Buffer.from(svg);
   if (t.path.endsWith(".png")) {

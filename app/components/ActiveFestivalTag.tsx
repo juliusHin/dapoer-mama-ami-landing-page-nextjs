@@ -7,10 +7,13 @@ export default function ActiveFestivalTag({ festivalId }: { festivalId: string }
   const [days, setDays] = useState<number | null>(null);
 
   useEffect(() => {
-    const next = getNextFestival();
-    if (next?.id === festivalId) {
-      setDays(Math.max(0, daysUntil(next.poDeadline)));
-    }
+    const id = setTimeout(() => {
+      const next = getNextFestival();
+      if (next?.id === festivalId) {
+        setDays(Math.max(0, daysUntil(next.poDeadline)));
+      }
+    }, 0);
+    return () => clearTimeout(id);
   }, [festivalId]);
 
   if (days === null) return null;
