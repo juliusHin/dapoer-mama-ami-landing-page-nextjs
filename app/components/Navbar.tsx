@@ -57,7 +57,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          aria-label="Buka menu"
+          aria-label={open ? "Tutup menu" : "Buka menu"}
           aria-expanded={open}
           className="rounded-lg p-2 text-brown md:hidden"
         >

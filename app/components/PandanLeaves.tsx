@@ -1,3 +1,6 @@
+// NOTE: all sizes must stay < 32px — leaves sit at -top-8 (32px) so the
+// static pre-animation state stays clipped (fill-mode is none). Larger
+// sizes would peek into view during animation-delay.
 const leaves = [
   { left: "6%", delay: "0s", duration: "9s", size: 22 },
   { left: "18%", delay: "3.5s", duration: "11s", size: 16 },
