@@ -22,7 +22,7 @@ export default function FestivalTimeline() {
             <li key={f.id} className="relative">
               <span
                 aria-hidden="true"
-                className="absolute -left-[41px] flex h-6 w-6 items-center justify-center rounded-full border-2 border-gold bg-cream text-sm"
+                className="absolute -left-[45px] flex h-6 w-6 items-center justify-center rounded-full border-2 border-gold bg-cream text-sm"
               >
                 {f.emoji}
               </span>

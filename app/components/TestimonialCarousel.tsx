@@ -1,12 +1,13 @@
 "use client";
 
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useState } from "react";
 import { testimonials } from "@/lib/testimonials";
 
 export default function TestimonialCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   const goNext = useCallback(
     () => setIndex((i) => (i + 1) % testimonials.length),
@@ -16,10 +17,10 @@ export default function TestimonialCarousel() {
     setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
 
   useEffect(() => {
-    if (paused) return;
-    const t = setInterval(goNext, 6000);
-    return () => clearInterval(t);
-  }, [paused, goNext]);
+    if (paused || reduceMotion) return;
+    const t = setTimeout(goNext, 6000);
+    return () => clearTimeout(t);
+  }, [paused, reduceMotion, index, goNext]);
 
   const item = testimonials[index];
 
@@ -32,14 +33,16 @@ export default function TestimonialCarousel() {
         className="mx-auto mt-10 max-w-3xl px-4 text-center md:px-8"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
+        onFocus={() => setPaused(true)}
+        onBlur={() => setPaused(false)}
       >
-        <div className="relative min-h-56 md:min-h-44">
+        <div className="relative min-h-56 md:min-h-48">
           <AnimatePresence mode="wait">
             <motion.figure
               key={item.id}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
+              exit={{ opacity: 0, y: reduceMotion ? 0 : -16 }}
               transition={{ duration: 0.4 }}
             >
               <div
@@ -74,7 +77,7 @@ export default function TestimonialCarousel() {
                 onClick={() => setIndex(i)}
                 aria-label={`Testimoni ${i + 1}`}
                 aria-current={i === index}
-                className={`h-2.5 w-2.5 rounded-full transition-colors ${
+                className={`h-2.5 w-2.5 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-festival focus-visible:ring-offset-2 ${
                   i === index ? "bg-festival" : "bg-brown/20 hover:bg-brown/40"
                 }`}
               />
