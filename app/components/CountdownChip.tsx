@@ -16,10 +16,10 @@ export default function CountdownChip() {
   return (
     <div className="min-h-10" aria-live="polite">
       {info && (
-        <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold-light px-4 py-2 text-sm font-medium text-brown">
+        <div className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-gold/40 bg-gold-light px-4 py-2 text-xs font-medium text-brown md:text-sm">
           {info.days === 0
-            ? `⏳ PO ${info.name} ditutup HARI INI — pesan sekarang!`
-            : `⏳ PO ${info.name} ditutup ${info.days} hari lagi — pesan sekarang!`}
+            ? `⏳ PO ${info.name} ditutup HARI INI`
+            : `⏳ PO ${info.name} ditutup ${info.days} hari lagi`}
         </div>
       )}
     </div>
