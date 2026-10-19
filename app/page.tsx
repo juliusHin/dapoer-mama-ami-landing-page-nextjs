@@ -11,17 +11,19 @@ import TrustBadges from "./components/TrustBadges";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Navbar />
-      <Hero />
-      <TrustBadges />
-      <About />
-      <ProductGrid />
-      <FestivalTimeline />
-      <TestimonialCarousel />
-      <HowToOrder />
-      <Faq />
+      <main>
+        <Hero />
+        <TrustBadges />
+        <About />
+        <ProductGrid />
+        <FestivalTimeline />
+        <TestimonialCarousel />
+        <HowToOrder />
+        <Faq />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

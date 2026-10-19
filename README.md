@@ -65,7 +65,7 @@ app/
 ├── layout.tsx          # fonts, SEO metadata, viewport, JSON-LD, StickyWhatsApp
 ├── page.tsx            # susun 10 section
 ├── globals.css         # design tokens Tailwind v4 (@theme) — warm earthy palette
-├── components/         # 19 komponen (5 client leaf, sisanya server)
+├── components/         # 18 komponen (5 client leaf, sisanya server)
 └── lib/                # data + logika (site, festivals, products, testimonials, faqs) + tests
 scripts/                # generator gambar placeholder (sharp)
 docs/superpowers/plans/ # implementation plan lengkap

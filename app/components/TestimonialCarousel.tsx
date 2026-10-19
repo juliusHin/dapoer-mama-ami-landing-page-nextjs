@@ -46,6 +46,7 @@ export default function TestimonialCarousel() {
               transition={{ duration: 0.4 }}
             >
               <div
+                role="img"
                 className="text-xl tracking-widest text-gold"
                 aria-label={`Rating ${item.rating} dari 5`}
               >
