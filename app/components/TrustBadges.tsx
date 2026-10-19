@@ -9,7 +9,12 @@ const badges = [
 export default function TrustBadges() {
   return (
     <section aria-label="Keunggulan kami" className="border-y border-brown/10 bg-cream-dark">
-      <div className="mx-auto flex max-w-6xl snap-x gap-3 overflow-x-auto px-4 py-5 md:justify-center md:px-8">
+      <div
+        tabIndex={0}
+        role="group"
+        aria-label="Daftar keunggulan"
+        className="mx-auto flex max-w-6xl snap-x gap-3 overflow-x-auto px-4 py-5 lg:justify-center md:px-8"
+      >
         {badges.map((b) => (
           <div
             key={b.label}

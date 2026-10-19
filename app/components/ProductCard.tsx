@@ -10,7 +10,7 @@ export default function ProductCard({ product }: { product: Product }) {
       : waMessages.order(product.name);
 
   return (
-    <article className="group overflow-hidden rounded-card border border-brown/10 bg-white shadow-soft transition-shadow hover:shadow-lift">
+    <article className="group flex flex-col overflow-hidden rounded-card border border-brown/10 bg-white shadow-soft transition-shadow hover:shadow-lift">
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={product.image}
@@ -25,23 +25,25 @@ export default function ProductCard({ product }: { product: Product }) {
               product.badge === "Best Seller" ? "bg-festival text-white" : "bg-gold text-brown"
             }`}
           >
-            {product.badge === "Best Seller" ? "⭐ Best Seller" : "🥮 Festival"}
+            <span aria-hidden="true">{product.badge === "Best Seller" ? "⭐ " : "🥮 "}</span>
+            {product.badge}
           </span>
         )}
       </div>
-      <div className="p-5">
+      <div className="flex flex-1 flex-col p-5">
         <h3 className="font-serif text-xl font-bold text-brown">{product.name}</h3>
-        <p className="mt-2 min-h-10 text-sm leading-relaxed text-brown-light">
+        <p className="mb-4 mt-2 text-sm leading-relaxed text-brown-light">
           {product.description}
         </p>
-        <div className="mt-4 flex items-center justify-between">
-          <span className="text-xs font-medium text-brown-light/80">
+        <div className="mt-auto flex items-center justify-between">
+          <span className="text-xs font-medium text-brown-light">
             Min. order {product.minOrder} pcs
           </span>
           <a
             href={waLink(message)}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`Pesan ${product.name}`}
             className="inline-flex items-center gap-1.5 rounded-full bg-festival px-4 py-2 text-xs font-semibold text-white transition hover:brightness-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-festival focus-visible:ring-offset-2"
           >
             <WhatsAppIcon className="h-3.5 w-3.5" /> Pesan
