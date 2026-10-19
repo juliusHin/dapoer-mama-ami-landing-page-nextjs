@@ -6,11 +6,16 @@ import WhatsAppIcon from "./WhatsAppIcon";
 const igPosts = [
   { src: "/images/ig/1.webp", alt: "Bacang daun pandan", cls: "h-40 rotate-[-1.5deg]" },
   { src: "/images/ig/2.webp", alt: "Rendang vegetarian", cls: "h-52 rotate-[1deg]" },
-  { src: "/images/ig/3.webp", alt: "Mooncake", cls: "h-36 rotate-[0.5deg] border-2 border-gold bg-white p-1.5" },
+  { src: "/images/ig/3.webp", alt: "Mooncake", cls: "h-36 rotate-[0.5deg] border-2 border-gold", polaroid: true },
   { src: "/images/ig/4.webp", alt: "Ayam kuluyuk", cls: "h-48 -rotate-[1deg]" },
-  { src: "/images/ig/5.webp", alt: "Proses memasak", cls: "h-40 rotate-[1.5deg] bg-white p-1.5 shadow-lift" },
+  { src: "/images/ig/5.webp", alt: "Proses memasak", cls: "h-40 rotate-[1.5deg] shadow-lift", polaroid: true },
   { src: "/images/ig/6.webp", alt: "Nasi box", cls: "h-44 rotate-[-0.5deg]" },
 ];
+
+async function CopyrightYear() {
+  "use cache";
+  return <span>{new Date().getFullYear()}</span>;
+}
 
 export default function Footer() {
   return (
@@ -31,7 +36,9 @@ export default function Footer() {
                 className={`relative block w-28 overflow-hidden rounded-lg shadow-soft transition-transform hover:rotate-0 hover:scale-105 ${p.cls}`}
                 aria-label={`Instagram: ${p.alt}`}
               >
-                <Image src={p.src} alt={p.alt} fill sizes="112px" className="object-cover" />
+                <span className={`relative block h-full w-full ${p.polaroid ? "bg-white p-1.5" : ""}`}>
+                  <Image src={p.src} alt="" fill sizes="112px" className="object-cover" />
+                </span>
               </a>
             ))}
           </div>
@@ -51,7 +58,7 @@ export default function Footer() {
             href={waLink(waMessages.general)}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 font-semibold text-white transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brown"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 font-semibold text-brown transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brown"
           >
             <WhatsAppIcon className="h-5 w-5" /> Chat WhatsApp
           </a>
@@ -71,7 +78,7 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto mt-14 max-w-6xl border-t border-cream/15 px-4 pt-6 text-center text-sm text-cream/60 md:px-8">
-        © {new Date().getFullYear()} Dapoer Mama Ami — {site.tagline}. Dibuat dengan ❤️ di Binong, Banten.
+        © <CopyrightYear /> Dapoer Mama Ami — {site.tagline}. Dibuat dengan ❤️ di Binong, Banten.
       </div>
     </footer>
   );

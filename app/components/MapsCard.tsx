@@ -22,7 +22,7 @@ export default function MapsCard() {
   return (
     <button
       onClick={() => setLoaded(true)}
-      className="group relative h-64 w-full overflow-hidden rounded-card bg-pandan-light text-center"
+      className="group relative h-64 w-full overflow-hidden rounded-card bg-pandan-light text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-festival focus-visible:ring-offset-2"
     >
       <span className="absolute inset-0 opacity-15 [background-image:repeating-linear-gradient(45deg,#5A7D3A_0_1px,transparent_1px_12px)]" />
       <span className="relative mt-16 inline-block">
