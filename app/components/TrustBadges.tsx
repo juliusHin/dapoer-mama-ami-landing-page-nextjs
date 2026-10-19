@@ -13,7 +13,7 @@ export default function TrustBadges() {
         tabIndex={0}
         role="group"
         aria-label="Daftar keunggulan"
-        className="mx-auto flex max-w-6xl snap-x gap-3 overflow-x-auto px-4 py-5 lg:justify-center md:px-8"
+        className="mx-auto flex max-w-6xl snap-x gap-3 overflow-x-auto px-4 py-5 xl:justify-center md:px-8"
       >
         {badges.map((b) => (
           <div
