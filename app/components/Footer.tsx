@@ -6,9 +6,9 @@ import WhatsAppIcon from "./WhatsAppIcon";
 const igPosts = [
   { src: "/images/ig/1.webp", alt: "Bacang daun pandan", cls: "h-40 rotate-[-1.5deg]" },
   { src: "/images/ig/2.webp", alt: "Rendang vegetarian", cls: "h-52 rotate-[1deg]" },
-  { src: "/images/ig/3.webp", alt: "Mooncake", cls: "h-36 rotate-[0.5deg] border-2 border-gold", polaroid: true },
+  { src: "/images/ig/3.webp", alt: "Mooncake", cls: "h-36 rotate-[0.5deg] border-2 border-gold bg-white", polaroid: true },
   { src: "/images/ig/4.webp", alt: "Ayam kuluyuk", cls: "h-48 -rotate-[1deg]" },
-  { src: "/images/ig/5.webp", alt: "Proses memasak", cls: "h-40 rotate-[1.5deg] shadow-lift", polaroid: true },
+  { src: "/images/ig/5.webp", alt: "Proses memasak", cls: "h-40 rotate-[1.5deg] shadow-lift bg-white", polaroid: true },
   { src: "/images/ig/6.webp", alt: "Nasi box", cls: "h-44 rotate-[-0.5deg]" },
 ];
 
@@ -36,7 +36,7 @@ export default function Footer() {
                 className={`relative block w-28 overflow-hidden rounded-lg shadow-soft transition-transform hover:rotate-0 hover:scale-105 ${p.cls}`}
                 aria-label={`Instagram: ${p.alt}`}
               >
-                <span className={`relative block h-full w-full ${p.polaroid ? "bg-white p-1.5" : ""}`}>
+                <span className={p.polaroid ? "absolute inset-1.5" : "block h-full w-full"}>
                   <Image src={p.src} alt="" fill sizes="112px" className="object-cover" />
                 </span>
               </a>
